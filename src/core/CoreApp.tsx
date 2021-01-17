@@ -32,7 +32,7 @@ export const CoreApp: React.FC = (props) => {
 			<Grid container spacing={0}>
 				<Grid item xs={12}>
 					<AppBar position="static">
-						<Toolbar>
+						<Toolbar variant="dense">
 							<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
 								<MenuIcon />
 							</IconButton>
