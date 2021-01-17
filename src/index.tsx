@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { CoreApp } from './core/CoreApp';
-import { Posts } from './generator-posts/react';
+import { Posts } from './generator-posts/';
 
 
 const App = () => {

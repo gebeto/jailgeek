@@ -11,10 +11,6 @@ export interface CreatePostGeneratorProps {
 
 	resultImage: HTMLImageElement;
 
-	postInput?: HTMLInputElement | HTMLTextAreaElement;
-	hashInput?: HTMLInputElement | HTMLTextAreaElement;
-	generateButton?: HTMLButtonElement;
-
 	updateOffset?: number;
 }
 
@@ -24,7 +20,6 @@ export function CreatePostGenerator(props: CreatePostGeneratorProps) {
 		let result = text
 			.replace(/\*(.+?)\*/gi, '<span class="blue">$1</span>')
 			.replace(/\n/g, "<br />")
-		console.log(result);
 		return result;
 	}
 
@@ -86,6 +81,7 @@ export function CreatePostGenerator(props: CreatePostGeneratorProps) {
 	return {
 		setImgRef(img: HTMLImageElement) {
 			props.resultImage = img;
+			offsetableUpdateCanvas.withoutOffset();
 		},
 
 		setTag(hashStr: string) {

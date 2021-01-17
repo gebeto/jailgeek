@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -26,9 +27,9 @@ export const CoreApp: React.FC = (props) => {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.root}>
+		<React.Fragment>
 			<CssBaseline />
-			<Grid container spacing={2}>
+			<Grid container spacing={0}>
 				<Grid item xs={12}>
 					<AppBar position="static">
 						<Toolbar>
@@ -43,9 +44,12 @@ export const CoreApp: React.FC = (props) => {
 					</AppBar>
 				</Grid>
 				<Grid item xs={12}>
+					<Box mt={2} />
+				</Grid>
+				<Grid item xs={12}>
 					{props.children}
 				</Grid>
 			</Grid>
-		</div>
+		</React.Fragment>
 	);
 }
