@@ -1,0 +1,25 @@
+{
+  "name": "parc",
+  "version": "1.0.0",
+  "license": "MIT",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel serve index.html --port 5000 --dist-dir dist --no-cache",
+    "build": "parcel build index.html --no-cache"
+  },
+  "targets": {
+    "default": {
+      "publicUrl": "./"
+    }
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "html2canvas": "^1.0.0-rc.7",
+    "parcel": "^2.0.0-beta.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
