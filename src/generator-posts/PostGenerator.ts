@@ -16,6 +16,10 @@ export interface CreatePostGeneratorProps {
 
 
 export function CreatePostGenerator(props: CreatePostGeneratorProps) {
+	const components: any = {
+		resultImage: null,
+	};
+
 	function generateText(text: string) {
 		let result = text
 			.replace(/\*(.+?)\*/gi, '<span class="blue">$1</span>')
@@ -36,7 +40,7 @@ export function CreatePostGenerator(props: CreatePostGeneratorProps) {
 	// WRAPPER
 	const contentWrapper = document.createElement("div")!;
 	contentWrapper.className = "post__content-wrapper";
-	document.body.appendChild(contentWrapper);
+	// document.body.appendChild(contentWrapper);
 
 	const content = document.createElement("div")
 	content.className = "post__content";
@@ -64,7 +68,9 @@ export function CreatePostGenerator(props: CreatePostGeneratorProps) {
 	const offsetableUpdateCanvas = new Offsetable(props.updateOffset || 1000, function() {
 		const converter = html2canvas(content);
 		converter.then(function(canvas) {
-			props.resultImage.src = canvas.toDataURL();
+			if (components.resultImage) {
+				components.resultImage.src = canvas.toDataURL();
+			}
 		});
 	});
 
@@ -76,11 +82,11 @@ export function CreatePostGenerator(props: CreatePostGeneratorProps) {
 		return result;
 	}
 
-	offsetableUpdateCanvas.withoutOffset();
+	// offsetableUpdateCanvas.withoutOffset();
 
 	return {
 		setImgRef(img: HTMLImageElement) {
-			props.resultImage = img;
+			components.resultImage = img;
 			offsetableUpdateCanvas.withoutOffset();
 		},
 
@@ -96,6 +102,17 @@ export function CreatePostGenerator(props: CreatePostGeneratorProps) {
 
 		generate() {
 			offsetableUpdateCanvas.withoutOffset();
+		},
+
+		mount() {
+			document.body.appendChild(contentWrapper);
+			setTimeout(() => {
+				offsetableUpdateCanvas.withoutOffset();
+			}, 10);
+		},
+
+		unmount() {
+			document.body.removeChild(contentWrapper);
 		}
 	};
 }

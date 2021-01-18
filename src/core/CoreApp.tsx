@@ -10,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 
+import { HashRouter, Link } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -23,11 +25,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+
 export const CoreApp: React.FC = (props) => {
 	const classes = useStyles();
 
 	return (
-		<React.Fragment>
+		<HashRouter>
 			<CssBaseline />
 			<Grid container spacing={0}>
 				<Grid item xs={12}>
@@ -37,9 +40,10 @@ export const CoreApp: React.FC = (props) => {
 								<MenuIcon />
 							</IconButton>
 							<Typography variant="h6" className={classes.title}>
-								Пост
+								JailGeek
 							</Typography>
-							<Button color="inherit">JG</Button>
+							<Button to="/posts" component={Link} color="inherit">Пост</Button>
+							<Button to="/wallpapers" component={Link} color="inherit">Обои</Button>
 						</Toolbar>
 					</AppBar>
 				</Grid>
@@ -50,6 +54,6 @@ export const CoreApp: React.FC = (props) => {
 					{props.children}
 				</Grid>
 			</Grid>
-		</React.Fragment>
+		</HashRouter>
 	);
 }

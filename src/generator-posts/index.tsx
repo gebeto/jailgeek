@@ -50,6 +50,11 @@ const useStyles = makeStyles(theme => ({
 export const Posts = () => {
 	const classes = useStyles();
 
+	React.useEffect(() => {
+		post.mount();
+		return () => post.unmount();
+	}, []);
+
 	return (
 		<Card className={classes.root}>
 			<CardMedia>
